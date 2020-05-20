@@ -18,16 +18,4 @@ do
     BUILD_ARGS="$BUILD_ARGS --build-arg $ARG"
 done
 
-LOAD=
-if [ $7 = true ];
-then
-    LOAD="--load"
-fi
-
-TARGET=
-if [ -z "$8" ];
-then
-   TARGET="--target $8"
-fi
-
-docker buildx build --platform $1 $PUSH $LOAD $TAGS $BUILD_ARGS $TARGET -f $4 .
+docker buildx build --platform $1 $PUSH $TAGS $BUILD_ARGS -f $4 .
